@@ -3,7 +3,7 @@ input[type=submit]
 padding:4px;
 font-size:12px;
 }
-input[type=text]{
+input[type=text] input[type=password]{
 padding: 8px;
 }
 label{

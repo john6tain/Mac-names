@@ -3,12 +3,12 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "engineStrict" : true ,
+  "engineStrict": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines":{
-	"node" : "6.10.0"
+  "engines": {
+    "node": "6.10.0"
   },
   "author": "John6tain",
   "license": "MIT",

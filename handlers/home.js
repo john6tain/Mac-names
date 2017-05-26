@@ -44,7 +44,7 @@ module.exports = (req, res) => {
                     'Location': '/'
                 });
                 res.end();
-            }else{
+            } else {
                 res.writeHead(302, {
                     'Location': '/'
                 });

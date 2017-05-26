@@ -35,7 +35,7 @@ color: aliceblue;
 }
 
 /* Makes responsive fields. Sets size and field alignment.*/
-input[type=text]{
+input[type=text],input[type=password]{
 margin-bottom: 20px;
 margin-top: 10px;
 width:100%;
@@ -69,5 +69,8 @@ margin-bottom: 20px;
 resize:none;
 }
 input[type=text]:focus,textarea:focus {
+border-color: #4697e4;
+}
+input[type=password]:focus,textarea:focus {
 border-color: #4697e4;
 }
