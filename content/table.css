@@ -1,0 +1,6 @@
+table,tr,td{
+    border:2px solid;
+    margin-left: 10%;
+    width:80%;
+    overflow-x:auto;
+}​

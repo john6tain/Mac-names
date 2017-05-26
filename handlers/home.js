@@ -38,27 +38,21 @@ module.exports = (req, res) => {
         let dataString = '';
         req.on('data', (data) => { dataString += data });
         req.on('end', () => {
-            //console.log(qs.parse(dataString));
-            People.create(qs.parse(dataString));
-            res.writeHead(302, {
-                'Location': '/'
-            });
-            res.end();
-        });
-    } else if (req.pathname.startsWith('/content/') && req.method === 'GET') {
-		let filePath = path.normalize(path.join(__dirname, '../content/favicon.ico'));
-        fs.readFile(filePath,(err, data) => {
-			 if (err) {
-                res.writeHead(404);
-                res.write('Resurce not found');
+            if (dataString !== 'name=&MAC=') {
+                People.create(qs.parse(dataString));
+                res.writeHead(302, {
+                    'Location': '/'
+                });
                 res.end();
-                return;
+            }else{
+                res.writeHead(302, {
+                    'Location': '/'
+                });
+                res.end();
             }
-			res.writeHead(200,{'Content-Type':'image/x-icon'});
-            res.write(data);
-            res.end();
-		});
-    } else{
+
+        });
+    } else {
         return true;
     }
 }
