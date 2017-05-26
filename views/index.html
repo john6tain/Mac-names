@@ -2,17 +2,22 @@
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="/content/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/content/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="/content/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="/content/responsiveform.css">
+<link rel="stylesheet" media="screen and (max-width: 1200px) and (min-width: 601px)" href="/content/responsiveform1.css" />
+<link rel="stylesheet" media="screen and (max-width: 600px) and (min-width: 351px)" href="/content/responsiveform2.css" />
+<link rel="stylesheet" media="screen and (max-width: 350px)" href="responsiveform3.css" />
     <title>MAC Names</title>
 	<style>
-		table {
+		table,tr,td{
     border:2px solid;
     padding:10px 40px; 
-    width:300px;
+    width:100%;
     resize:both;
     overflow:auto;
-}​
+	}​
 	</style>
 </head>
 <body>
@@ -25,7 +30,7 @@
 </br>
         <form method="POST">
             <div>
-                <label>name</label>
+                <label>Name</label>
                 <input type="text" name='name'/>
             </div>
            <div> <label>MAC</label>
