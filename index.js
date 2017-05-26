@@ -4,10 +4,12 @@ const path = require('path');
 const qs = require('querystring');
 const fs = require('fs');
 const People = require('./model');
+const port = process.env.PORT || 80;
 const env = process.env.NODE_ENV || 'development';
 const config = require('./config');
 const database = require('./db.config');
 database(config[env]);
+
 
 http.createServer((req, res) => {
     req.pathname = req.pathname || url.parse(req.url).pathname;
@@ -54,5 +56,5 @@ http.createServer((req, res) => {
         return true;
     }
 
-}).listen(80);
+}).listen(port);
 console.log("4uk")
