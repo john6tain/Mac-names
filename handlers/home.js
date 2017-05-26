@@ -45,7 +45,20 @@ module.exports = (req, res) => {
             });
             res.end();
         });
-    } else {
+    } else if (req.pathname.startsWith('/content/') && req.method === 'GET') {
+		let filePath = path.normalize(path.join(__dirname, '../content/favicon.ico'));
+        fs.readFile(filePath,(err, data) => {
+			 if (err) {
+                res.writeHead(404);
+                res.write('Resurce not found');
+                res.end();
+                return;
+            }
+			res.writeHead(200,{'Content-Type':'image/x-icon'});
+            res.write(data);
+            res.end();
+		});
+    } else{
         return true;
     }
 }
