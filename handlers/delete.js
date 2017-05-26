@@ -44,7 +44,14 @@ module.exports = (req, res) => {
                     });
                     res.end();
                 })
-            }
+            }else{
+				res.writeHead(403, {
+                        'Location': '/'
+                    });
+					res.write("403 Forbidden");
+                    res.end();
+			}
+				
         });
 
 
