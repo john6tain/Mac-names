@@ -29,8 +29,12 @@ module.exports = (req, res) => {
         });
         req.on('end', () => {
             data = qs.parse(data);
-            let hash = crypto.createHmac('sha256', "123")
-                .update(data.password).digest('hex');
+            console.log(data);
+            let hash;
+            if (data.password) {
+                hash = crypto.createHmac('sha256', "123")
+                    .update(data.password).digest('hex');
+            }
             if (data.name === 'admin' && hash === '6df0b759b618276270cf3c5856d1024b11476e3ab03691a14da6340316095ae7') {
                 let id = req.pathname.substring(8);
                 People.findByIdAndRemove(id, (err, data) => {
@@ -38,20 +42,19 @@ module.exports = (req, res) => {
                         console.log(err);
                         return
                     }
-                    console.log(data);
                     res.writeHead(302, {
                         'Location': '/'
                     });
                     res.end();
                 })
-            }else{
-				res.writeHead(403, {
-                        'Location': '/'
-                    });
-					res.write("403 Forbidden");
-                    res.end();
-			}
-				
+            } else {
+                res.writeHead(403, {
+                    'Location': '/'
+                });
+                res.write("403 Forbidden");
+                res.end();
+            }
+
         });
 
 
