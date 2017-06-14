@@ -35,11 +35,16 @@ module.exports = (req, res) => {
                 hash = crypto.createHmac('sha256', "123")
                     .update(data.password).digest('hex');
             }
+            let dbReq;
             if (data.name === 'admin' && hash === '6df0b759b618276270cf3c5856d1024b11476e3ab03691a14da6340316095ae7') {
                 let id = req.pathname.substring(8);
                 People.findByIdAndRemove(id, (err, data) => {
-                    if (err) {
-                        console.log(err);
+                    if (err || !data) {
+                        res.writeHead(410, {
+                            'Location': '/'
+                        });
+                        res.write("Gone");
+                        res.end();
                         return
                     }
                     res.writeHead(302, {
@@ -54,7 +59,6 @@ module.exports = (req, res) => {
                 res.write("403 Forbidden");
                 res.end();
             }
-
         });
 
 
